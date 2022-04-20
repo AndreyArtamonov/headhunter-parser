@@ -7,8 +7,11 @@ import sys
 title = "Парсер данных о вакансиях"
 
 headers = {
-    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36'
+    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,'
+              'application/signed-exchange;v=b3;q=0.9',
+
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                  'Chrome/100.0.4896.88 Safari/537.36 '
 }
 
 
@@ -36,12 +39,17 @@ def get_number_vacancies(keywords):
 
 def parse_stats():
     keywords = database.get_keywords()
-    get_number_vacancies(keywords)
 
-    print('===Парсинг данных завершен===')
+    if len(keywords) > 0:
+        print('===Получаем все ключевые слова для поиска из базы данных===')
+        get_number_vacancies(keywords)
+        print('===Парсинг данных завершен===')
+    else:
+        print('===Добавьте ключевые слова в базу данных===')
 
 
 if __name__ == '__main__':
+    # TODO: Добавить исключение, если не добавлены аргументы
     if sys.argv[1] == '--parse-stats':
         parse_stats()
     else:
