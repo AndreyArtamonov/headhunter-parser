@@ -11,7 +11,7 @@ else:
     database.execute("CREATE TABLE keywords (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR (255) NOT NULL)")
     database.execute(
         "CREATE TABLE stats (id INTEGER  PRIMARY KEY AUTOINCREMENT, keyword_id INTEGER  REFERENCES keywords (id), "
-        "value INTEGER NOT NULL DEFAULT (0), created_at DATETIME DEFAULT((datetime('now'))))")
+        "value INTEGER NOT NULL DEFAULT (0), created_at DATETIME DEFAULT((datetime('now', 'localtime'))))")
     database.commit()
 
 
