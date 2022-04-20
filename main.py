@@ -4,8 +4,6 @@ import re
 import database
 import sys
 
-title = "Парсер данных о вакансиях"
-
 headers = {
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,'
               'application/signed-exchange;v=b3;q=0.9',
@@ -41,11 +39,11 @@ def parse_stats():
     keywords = database.get_keywords()
 
     if len(keywords) > 0:
-        print('===Получаем все ключевые слова для поиска из базы данных===')
+        print('===Get all keywords from the database===')
         get_number_vacancies(keywords)
-        print('===Парсинг данных завершен===')
+        print('===Parsing completed===')
     else:
-        print('===Добавьте ключевые слова в базу данных===')
+        print('===WARNING! Need add keywords to the database===')
 
 
 if __name__ == '__main__':
@@ -53,4 +51,4 @@ if __name__ == '__main__':
     if sys.argv[1] == '--parse-stats':
         parse_stats()
     else:
-        print('===Не переданы параметры для запуска===')
+        print('===Not passed parameters===')

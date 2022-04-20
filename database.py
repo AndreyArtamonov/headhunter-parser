@@ -2,10 +2,10 @@ import sqlite3
 import os
 
 if os.path.exists('database.sqlite3'):
-    print('===Соединение с базой данных===')
+    print('===Connecting local database===')
     database = sqlite3.connect('database.sqlite3')
 else:
-    print('===Создаем базу данных===')
+    print('===Creating local database===')
     open('database.sqlite3', 'a').close()
     database = sqlite3.connect('database.sqlite3')
     database.execute("CREATE TABLE keywords (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR (255) NOT NULL)")
